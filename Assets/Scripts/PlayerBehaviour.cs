@@ -10,6 +10,9 @@ public class PlayerBehaviour : MonoBehaviour
     public float movementSpeed = 5f;
     public int monedas = 0;
     public TextMeshProUGUI coinsText;
+    public AudioClip coinSound;
+    public AudioClip specialCoinSound;
+    public AudioClip gameMusic;
 
     // Start is called before the first frame update
     void Start()
@@ -39,11 +42,12 @@ public class PlayerBehaviour : MonoBehaviour
         {
             monedas++;
             //Debug.Log(gameObject.name + " ha cogido " + monedas + " monedas");
+            AudioSource.PlayClipAtPoint(coinSound, transform.position);
         }
         else if (other.CompareTag("SpecialCoinItem"))
         {
             monedas += 5;
-           // Debug.Log(gameObject.name + " ha cogido " + monedas + " monedas");
+            // Debug.Log(gameObject.name + " ha cogido " + monedas + " monedas");
         }
 
         if (other.tag.Contains("Coin"))
